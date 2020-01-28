@@ -3,6 +3,7 @@ import org.apache.tools.ant.filters.ReplaceTokens
 
 plugins {
     id 'java'
+    id "io.freefair.lombok" version "4.1.6"
     id 'com.github.johnrengelman.shadow' version '5.1.0'
 }
 
@@ -15,9 +16,7 @@ archivesBaseName = 'Plugin' // Put your artifactId here
 mainClassName = 'me.magnum.plugin'
 
 repositories {
-    mavenLocal()
     mavenCentral()
-
     maven {url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/'}
     maven { url = "https://repo.aikar.co/content/groups/aikar/" }
     maven { url = "https://maven.sk89q.com/repo/" }
@@ -27,8 +26,6 @@ repositories {
 
 dependencies {
     compileOnly group: 'org.spigotmc', name: 'spigot', version: '1.12.2-R0.1-SNAPSHOT' // No Shaded
-    compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.8'
-    annotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.18.8' // IntelliJ likes this to work
 }
 
 shadowJar {

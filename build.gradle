@@ -3,9 +3,9 @@ import org.apache.tools.ant.filters.ReplaceTokens
 
 plugins {
     id 'java'
-    id 'kr.entree.spigradle' version '1.2.4'
+    id 'kr.entree.spigradle' version '2.1.1'
     id "io.freefair.lombok" version "4.1.6"
-    id 'com.github.johnrengelman.shadow' version '5.1.0'
+    id 'com.github.johnrengelman.shadow' version '6.0.0'
 }
 
 group = 'me.magnum'
@@ -14,31 +14,27 @@ description = 'What it does'
 sourceCompatibility = '1.8'
 archivesBaseName = 'Plugin' // Put your artifactId here
 
-mainClassName = 'me.magnum.main'
-
 // See https://github.com/EntryPointKR/Spigradle#repositories for repository shortcodes
 repositories {
     mavenCentral()
-paper()	
-enderZone()	
+    paper()
+    enderZone()
     maven { url = "https://repo.aikar.co/content/groups/aikar/" }
     jitpack() // For vault
 }
 
 dependencies {
-spigot()
+    compileOnly paper()
 
-    compileOnly group: 'org.spigotmc', name: 'spigot', version: '1.12.2-R0.1-SNAPSHOT' // No Shaded
 }
 
 shadowJar {
-    classifier = null // remove -all from end of jar
+    setClassifier = null // remove -all from end of jar
 }
 spigot {
-    authors = ['Me']
-    depends = ['ProtocolLib']
-    apiVersion = '1.15'
-    load = STARTUP
+    authors = ['Magnum1997']
+//    depends = ['ProtocolLib']
+    apiVersion = '1.16'
     commands {
         give {
             aliases = ['i']
